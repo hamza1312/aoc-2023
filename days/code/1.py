@@ -16,7 +16,6 @@ for line in input:
         'four': '4',
         'five': '5',
         'six': '6',
-        'twone': '21',
         'seven': '7',
         'eight': '8',
         'nine': '9'
