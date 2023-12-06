@@ -2,22 +2,15 @@ from loadinput import loadinput
 
 DAY = 6
 
-time, distance = loadinput(DAY).split('\n')
-time = [int(t) for t in time.split(':')[1].split()]
-distance = [int(d) for d in distance.split(':')[1].split()]
+times, distances = [list(map(int, ["".join(line.split(":")[1].split())])) for line in loadinput(DAY).split('\n')]
+
 result = 1
 
-
-def calc(t, d):
-    res = 0
-    for x in range(t + 1):
-        distancex = x * (t - x)
-        if distancex >= d:
-            res += 1
-    return res
-
-
-for i in range(len(time)):
-    result *= calc(time[i], distance[i])
+for time, distance in zip(times, distances):
+    margin = 0
+    for hold in range(time):
+        if hold * (time - hold) > distance:
+            margin += 1
+    result *= margin
 
 print(result)
